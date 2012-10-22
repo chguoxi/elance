@@ -1,7 +1,7 @@
 ﻿<?php
 
 $t1 = microtime(true);
-echo GetLongestString('aa','aaa','bbbb','1','2333333333').'<br />';
+echo GetLongestString1('aa','aaa','bbbb','1','2333333333').'<br />';
 $t2 = microtime(true);
 
 echo $t2-$t1;
