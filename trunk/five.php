@@ -15,6 +15,7 @@ function GeneratePassword ($length,$chars)
 	}
 	return $res;
 }
+
 //this not so good -------------------------------------------------------------
 //cost 2.0027160644531E-5
 function GeneratePassword1($num,$str){

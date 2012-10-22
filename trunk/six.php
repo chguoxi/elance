@@ -9,15 +9,27 @@ $myarray = array(2,3,400,array(4,5,329,2555,5000,array(6000,10000,array(10011,ar
 
 //echo MaxArray($myarray);
 $t1 = microtime(true);
-print_r(MaxArray1($myarray));
+print_r(MaxArray($myarray));
 echo '<br />';
 $t2 = microtime(true);
-
 echo $t2-$t1;
+
+//this is  best --------------------------------------------------------------------
+//cost 8.082389831543E-5
+function MaxArray($arr) {
+    $max = 0;
+    foreach($arr as $a) {
+        $tmp = is_array($a) ? MaxArray($a) : $a;
+        $max = ($tmp > $max) ? $tmp : $max;
+    }
+    return $max;
+}
+
+//echo $t2-$t1;
 
 //this is better -------------------------------------------------------------------
 //cost 0.00011801719665527
-function MaxArray($arr){
+function MaxArray2($arr){
 	$str =  serialize($arr);
 	preg_match_all('/[\d]+/',$str,$new_array);
 	return max($new_array[0]);
@@ -45,12 +57,10 @@ function MaxArray1($arr){
 		}
 		
 	}
-	
 	if($has_array){
 		return MaxArray1($arr);
 	}
 	else {
 		return max($arr);
 	}
-	
 }
